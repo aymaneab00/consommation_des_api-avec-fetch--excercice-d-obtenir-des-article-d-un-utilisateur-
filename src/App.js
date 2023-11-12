@@ -25,33 +25,23 @@ function App() {
     setactifbutton(!actifbutton);
   }
   return (
-    <div>
-      {utilisateurs.map((u, i) => (
-        <div>
-          <p key={i}>
-            {u.name}{" "}
-            <button onClick={() => handleclick(u.id)}>
-              Afficher detail d utilisateur{" "}
-            </button>{" "}
-          </p>
-          <div>
-            {useractif === u.id & actifbutton===true
-              ? articles
-                  .filter((a) => a.userId === useractif)
-                  .map((article) => 
-                   (
+ <div>
+  {utilisateurs.map((u,i)=> <div> 
 
-                     <div>
-                      <h1>{article.title}</h1>
-                      <p>{article.body}</p>
-                    </div>
-                  )
-                  ) 
-              : null}
-          </div>
-        </div>
-      ))}
-    </div>
+  <p key={i}>{u.name} <button onClick={()=>handleclick(u.id)}>afficher detail d utilisateur</button></p>
+  <ul>
+     { useractif===u.id && actifbutton ? articles.filter(a=>a.userId===useractif).map((article)=>
+     <div>
+      <h1>{article.title}</h1>
+      <p>{article.body}</p>
+     </div>
+     )
+     : null
+  }
+  </ul>
+  </div>
+  )}
+ </div>
   );
 }
 
